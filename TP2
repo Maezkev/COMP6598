@@ -50,6 +50,8 @@ public class TP2 {
       dataMK[0] = inputuser.next();
       System.out.print("Masukkan Nama Mata Kuliah : ");
       dataMK[1] = inputuser.next();
+      
+      //Check input grade pakai method validgrade
       do{
         System.out.print("Masukkan Grade Mata Kuliah : ");
         dataMK[2] = inputuser.next(); 
@@ -81,7 +83,23 @@ public class TP2 {
     System.out.println("\nMata Kuliah Yang Anda Ambil Adalah :");
     int SKS = 0;
     int GradeSKS = 0;
-    
+    for(int i = 0 ; i < isiMK.size() ; i-=-1){
+      
+      //Ambil & Print Data dari menu 1
+      String tampil=String.format("%s %s \t\t%s \t%s", isiMK.get(i)[0], 
+              isiMK.get(i)[1], 
+              isiMK.get(i)[2], 
+              isiMK.get(i)[3]);
+      System.out.println(tampil);
+      int Numgrade = gradetonum(isiMK.get(i) [2]);
+      int NumSKS = Integer.parseInt(isiMK.get(i) [3]);
+      GradeSKS = GradeSKS + (Numgrade * NumSKS);
+      SKS = SKS + NumSKS;
+    }
+
+    //Hasil IPS
+    double hasil = GradeSKS / SKS;
+    System.out.println(String.format("Nilai IPS anda adalah " + hasil ));
   }
   static void UG(){
     System.out.println("INI Update Grade");
