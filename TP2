@@ -66,7 +66,7 @@ public class TP2 {
     System.out.print(">> Data Mata Kuliah Berhasil Diinput! <<\n\n");
   }
   static int gradetonum(String gradealph){
-    switch(gradealph){
+    switch(gradealph.toUpperCase()){
       case "A" :
           return 4;
       case "B" :
@@ -82,7 +82,7 @@ public class TP2 {
   static void PIPS(){
     System.out.println("\nMata Kuliah Yang Anda Ambil Adalah :");
     int SKS = 0;
-    int GradeSKS = 0;
+    double GradeSKS = 0;
     for(int i = 0 ; i < isiMK.size() ; i-=-1){
       
       //Ambil & Print Data dari menu 1
@@ -91,7 +91,7 @@ public class TP2 {
               isiMK.get(i)[2], 
               isiMK.get(i)[3]);
       System.out.println(tampil);
-      int Numgrade = gradetonum(isiMK.get(i) [2]);
+      double Numgrade = gradetonum(isiMK.get(i) [2]);
       int NumSKS = Integer.parseInt(isiMK.get(i) [3]);
       GradeSKS = GradeSKS + (Numgrade * NumSKS);
       SKS = SKS + NumSKS;
