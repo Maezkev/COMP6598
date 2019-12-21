@@ -1,0 +1,89 @@
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.ArrayList;
+
+public class TP2 {
+  static Scanner inputuser = new Scanner(System.in);
+  static ArrayList<String[]> isiMK = new ArrayList<String[]>();
+  public static void main(String[] args) {
+    int nomenu = 0;
+    while (nomenu != 4){
+      System.out.println("\nMenu Pendataan dan Perhitungan IPS (Index Prestasi Semester) \n"
+                      + "1. Pendataan Mata Kuliah \n"
+                      + "2. Perhitungan IPS \n"
+                      + "3. Update Grade \n"
+                      + "4. Keluar \n"
+                      + "Masukkan Pilihan Anda : ");
+      nomenu = inputuser.nextInt();
+      switch(nomenu){
+        case 1:
+          PMK();
+          break;
+        case 2:
+          PIPS();
+          break;
+        case 3:
+          UG();
+          break;
+        case 4:
+          break;
+      }
+    }
+  }
+  
+  static boolean validgrade(String gradeMK){ 
+    if ("A".equals(gradeMK.toUpperCase()) || "B".equals(gradeMK.toUpperCase()) 
+        || "C".equals(gradeMK.toUpperCase()) || "D".equals(gradeMK.toUpperCase()) 
+        || "E".equals(gradeMK.toUpperCase()) ) 
+        return true; 
+    else System.out.println ("Masukan Grade Mata Kuliah yang benar(A,B,C,D,E)!"); 
+    return false; 
+  } 
+  static void PMK(){
+    System.out.print("\nMasukkan Jumlah Mata Kuliah : ");
+    int JMK = inputuser.nextInt();
+    isiMK.clear();
+    
+    for(int i = 0 ; i < JMK ; i-=-1){
+      String dataMK [] = new String [4];
+      System.out.print("\nMasukkan Kode Mata Kuliah : ");
+      dataMK[0] = inputuser.next();
+      System.out.print("Masukkan Nama Mata Kuliah : ");
+      dataMK[1] = inputuser.next();
+      do{
+        System.out.print("Masukkan Grade Mata Kuliah : ");
+        dataMK[2] = inputuser.next(); 
+      }
+      while(!validgrade(dataMK[2]));
+        System.out.print("Masukkan Jumlah SKS : ");
+        dataMK[3] = inputuser.next();
+      
+      isiMK.add(dataMK); 
+      System.out.println();
+    }
+    System.out.print(">> Data Mata Kuliah Berhasil Diinput! <<\n\n");
+  }
+  static int gradetonum(String gradealph){
+    switch(gradealph){
+      case "A" :
+          return 4;
+      case "B" :
+          return 3;
+      case "C" :
+          return 2;
+      case "D" :
+          return 1;
+      case "E" :
+          return 0;
+    } return 0;
+  }
+  static void PIPS(){
+    System.out.println("\nMata Kuliah Yang Anda Ambil Adalah :");
+    int SKS = 0;
+    int GradeSKS = 0;
+    
+  }
+  static void UG(){
+    System.out.println("INI Update Grade");
+  }
+}
