@@ -8,7 +8,7 @@ public class TK4 {
 
     public static void main(String[] args) {
         int nomenu = 0;
-        while (nomenu != 4) {
+        while (nomenu != 6) {
             System.out.print("\n\nSelamat Datang di Program Simulasi\n" + "Menu\n" + "1. Random Data\n"
                     + "2. Simulasi Bubble Sort - Ascending\n" + "3. Simulasi Selecion Sort - Ascending\n"
                     + "4. Simulasi Bubble Sort - Descending\n" + "5. Simulasi Selection Sort - Descending\n"
@@ -25,8 +25,8 @@ public class TK4 {
                 // SSA();
                 // break;
             case 4:
-                // BSD();
-                // break;
+                BSD();
+                break;
             case 5:
                 // SSD()
                 // break;
@@ -56,15 +56,35 @@ public class TK4 {
             System.out.println("\nPass " + i);
             tampilangka(listnumber);
 
-            for (int j = 0; j <= listnumber.length - 1 - i; j++) {
+            for (int j = 0; j <= listnumber.length - 2; j++) {
                 if (listnumber[j] >= listnumber[j + 1]) {
                     tukar(listnumber, j, j + 1);
                 }
                 tampilangka(listnumber);
             }
 
-            System.out.println("Result of Pass " + i + ": ");
+            System.out.println("\nResult of Pass " + i + ": ");
             tampilangka(listnumber);
+            System.out.println("");
+        }
+    }
+
+    // Menu 4
+    static void BSD() {
+        for (int i = 1; i <= listnumber.length - 1; i++) {
+            System.out.println("\nPass " + i);
+            tampilangka(listnumber);
+
+            for (int j = 0; j <= listnumber.length - 2; j++) {
+                if (listnumber[j] <= listnumber[j + 1]) {
+                    tukar(listnumber, j, j + 1);
+                }
+                tampilangka(listnumber);
+            }
+
+            System.out.println("\nResult of Pass " + i + ": ");
+            tampilangka(listnumber);
+            System.out.println("");
         }
     }
 
