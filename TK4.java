@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class TK4 {
     static Scanner inputuser = new Scanner(System.in);
     static int listnumber[] = new int[5];
+    static boolean ceklist = false;
 
     public static void main(String[] args) {
         int nomenu = 0;
@@ -31,7 +32,11 @@ public class TK4 {
                 // SSD()
                 // break;
             case 6:
+                keluar();
                 break;
+            default:
+                System.out
+                        .println("\nMenu " + nomenu + " tidak tersedia. Mohon pilih dari menu yang tersedia (1 - 6)\n");
             }
         }
     }
@@ -40,18 +45,32 @@ public class TK4 {
     static void RD() {
         System.out.print("Batas Atas : ");
         int BA = inputuser.nextInt();
+        if (BA == 0) {
+            System.out.println("\nBatas Atas tidak boleh '0'\n");
+            RD();
+        }
         System.out.print("Batas Bawah : ");
         int BB = inputuser.nextInt();
 
+        if (BA <= BB) {
+            System.out.println("\nBatas Atas harus lebih besar dari Batas Bawah\n");
+            RD();
+        }
+
         for (int i = 0; i < 5; i -= -1) {
             Random rand = new Random();
-            listnumber[i] = rand.nextInt((BA - BB) + 1) + BB;
+            listnumber[i] = rand.nextInt((BA - BB) + 0) + BB;
             System.out.print(listnumber[i] + "\t");
         }
+        ceklist = true;
     }
 
     // Menu 2
     static void BSA() {
+        if (!ceklist) {
+            System.out.println("\nAnda belum Masukkan Bilangan acak, Silahkan Pilih Menu Nomor 1\n");
+            main(null);
+        }
         for (int i = 1; i <= listnumber.length - 1; i++) {
             System.out.println("\nPass " + i);
             tampilangka(listnumber);
@@ -71,6 +90,10 @@ public class TK4 {
 
     // Menu 4
     static void BSD() {
+        if (!ceklist) {
+            System.out.println("\nAnda belum Masukkan Bilangan acak, Silahkan Pilih Menu Nomor 1\n");
+            main(null);
+        }
         for (int i = 1; i <= listnumber.length - 1; i++) {
             System.out.println("\nPass " + i);
             tampilangka(listnumber);
@@ -102,5 +125,10 @@ public class TK4 {
         temp = listnumber[v1];
         listnumber[v1] = listnumber[v2];
         listnumber[v2] = temp;
+    }
+
+    // Keluar
+    static void keluar() {
+        System.out.println("\nTerimakasih telah menggunakan program ini :)\n");
     }
 }
