@@ -23,14 +23,14 @@ public class TK4 {
                 BSA();
                 break;
             case 3:
-                // SSA();
-                // break;
+                SSA();
+                break;
             case 4:
                 BSD();
                 break;
             case 5:
-                // SSD()
-                // break;
+                SSD();
+                break;
             case 6:
                 keluar();
                 break;
@@ -73,18 +73,52 @@ public class TK4 {
         }
         for (int i = 1; i <= listnumber.length - 1; i++) {
             System.out.println("\nPass " + i);
-            tampilangka(listnumber);
+            tampillist(listnumber);
 
-            for (int j = 0; j <= listnumber.length - 2; j++) {
+            for (int j = 0; j <= listnumber.length - 1 - i; j++) {
                 if (listnumber[j] >= listnumber[j + 1]) {
                     tukar(listnumber, j, j + 1);
                 }
-                tampilangka(listnumber);
+                tampillist(listnumber);
             }
 
             System.out.println("\nResult of Pass " + i + ": ");
-            tampilangka(listnumber);
+            tampillist(listnumber);
             System.out.println("");
+        }
+    }
+
+    static int maks_temp;
+    static int min_temp;
+    static int k;
+    static int j;
+
+    // Menu 3
+    public static void SSA() {
+        if (!ceklist) {
+            System.out.println("\nAnda belum Masukkan Bilangan acak, Silahkan Pilih Menu Nomor 1\n");
+            main(null);
+        }
+
+        String titik_poin = "Minimum";
+
+        for (int i = 0; i <= listnumber.length - 2; i++) {
+            min_temp = i;
+
+            k = i + 1;
+            System.out.println("\nPass " + k);
+
+            for (int j = 1 + i; j <= listnumber.length - 1; j++) {
+                TampilSelection(listnumber, titik_poin, j, min_temp);
+                if (listnumber[j] <= listnumber[min_temp]) {
+                    min_temp = j;
+                }
+            }
+            TampilSelection(listnumber, titik_poin, min_temp, min_temp);
+
+            tukar(listnumber, i, min_temp);
+            System.out.println("Result of Pass " + k + ": ");
+            tampillist(listnumber);
         }
     }
 
@@ -96,25 +130,68 @@ public class TK4 {
         }
         for (int i = 1; i <= listnumber.length - 1; i++) {
             System.out.println("\nPass " + i);
-            tampilangka(listnumber);
+            tampillist(listnumber);
 
-            for (int j = 0; j <= listnumber.length - 2; j++) {
+            for (int j = 0; j <= listnumber.length - 1 - i; j++) {
                 if (listnumber[j] <= listnumber[j + 1]) {
                     tukar(listnumber, j, j + 1);
                 }
-                tampilangka(listnumber);
+                tampillist(listnumber);
             }
 
             System.out.println("\nResult of Pass " + i + ": ");
-            tampilangka(listnumber);
+            tampillist(listnumber);
             System.out.println("");
         }
     }
 
-    // Menampilkan List Number
-    public static void tampilangka(int[] listnumber) {
+    // Menu 5
+    public static void SSD() {
+        if (!ceklist) {
+            System.out.println("\nAnda belum Masukkan Bilangan acak, Silahkan Pilih Menu Nomor 1\n");
+            main(null);
+        }
+
+        String titik_poin = "Maximum";
+
+        for (int i = 0; i <= listnumber.length - 2; i++) {
+            maks_temp = i;
+
+            k = i + 1;
+            System.out.println("\nPass " + k);
+
+            for (int j = 1 + i; j <= listnumber.length - 1; j++) {
+                TampilSelection(listnumber, titik_poin, j, maks_temp);
+                if (listnumber[j] >= listnumber[maks_temp]) {
+                    maks_temp = j;
+                }
+            }
+            TampilSelection(listnumber, titik_poin, maks_temp, maks_temp);
+
+            tukar(listnumber, i, maks_temp);
+            System.out.println("Result of Pass " + k + ": ");
+            tampillist(listnumber);
+        }
+    }
+
+    // Menampilkan List Number Bubble
+    public static void tampillist(int[] listnumber) {
         for (int k = 0; k <= listnumber.length - 1; k++) {
             System.out.print(listnumber[k] + "   ");
+        }
+        System.out.println();
+    }
+
+    // Menampilkan List Number Selection
+    public static void TampilSelection(int[] listnumber, String poin_pusat, int b, int temp_min) {
+        for (int k = 0; k <= listnumber.length - 1; k++) {
+            if (k == temp_min) {
+                System.out.print("Current " + poin_pusat + " (" + listnumber[k] + ")   ");
+            } else if (k == j) {
+                System.out.print("(" + listnumber[k] + ")   ");
+            } else {
+                System.out.print(listnumber[k] + "   ");
+            }
         }
         System.out.println();
     }
