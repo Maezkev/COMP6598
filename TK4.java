@@ -43,16 +43,17 @@ public class TK4 {
 
     // Menu 1
     static void RD() {
+        System.out.print("Batas Bawah : ");
+        int BB = inputuser.nextInt();
+        
         System.out.print("Batas Atas : ");
         int BA = inputuser.nextInt();
         if (BA == 0) {
             System.out.println("\nBatas Atas tidak boleh '0'\n");
             RD();
         }
-        System.out.print("Batas Bawah : ");
-        int BB = inputuser.nextInt();
 
-        if (BA <= BB) {
+        if (BB >= BA) {
             System.out.println("\nBatas Atas harus lebih besar dari Batas Bawah\n");
             RD();
         }
